@@ -1,5 +1,6 @@
-#include <Wire.h>  //Wire library used by IMU and Dallas temp sensors
-#include <SPI.h>  //SPI library used by SD-card reader
+//Libraries
+#include <Wire.h>  //Wire library used for I2C
+#include <SPI.h>  //SPI library used by SD-card reader and IMU library
 #include "SparkFunMPL3115A2.h" //Altimeter Library
 #include <SparkFunLSM9DS1.h>  //IMU library
 #include <SD.h>  //SD card library
@@ -124,7 +125,7 @@ void loop() {
     digitalWrite(tempLED, LOW);
   }
 
-  //Creates the string "dataLOG" and includes the device measurements listed, which is then printed to the serial monitor, the xBee monitor, and the SD-card.
+  //Creates the string "dataLOG" and includes the device measurements listed, which is then printed to the serial monitor and the SD-card.
   String dataLOG = String(millis()) + ", " + magData + ", " + String(tempF) + ", " + String(alt);
     if(SDactive) {
       datalog = SD.open(filename, FILE_WRITE);
