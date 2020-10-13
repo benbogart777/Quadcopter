@@ -1,6 +1,6 @@
-#include <Wire.h>  //Wire library used by IMU and Dallas temp sensors
+//Libraries
+#include <Wire.h>  //Wire library allows for I2C communication
 #include "SparkFunMPL3115A2.h" //Altimeter Library
-
 
 //Pin definitions
 #define tempLED 24        
@@ -49,7 +49,7 @@ void loop() {
     digitalWrite(tempLED, LOW);
   }
 
-  //Creates the string "dataLOG" and includes the device measurements listed, which is then printed to the serial monitor, the xBee monitor, and the SD-card.
+  //Creates the string "dataLOG" and includes the device measurements listed, which is then printed to the serial monitor.
   String dataLOG = String(millis()) + "," + String(tempF) + ", " + String(alt);
   Serial.println(dataLOG);  //prints to the serial monitor so you can see the incoming data
   delay(500);  //waits .5 sec before re-running the loop  

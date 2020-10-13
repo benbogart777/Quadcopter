@@ -1,7 +1,7 @@
-#include <Wire.h>  //Wire library used by IMU and Dallas temp sensors
-#include <SPI.h>  //SPI library used by SD-card reader
+//Libraries
+#include <Wire.h>  //Wire library used for I2C communication
+#include <SPI.h>  //SPI library needed for IMU
 #include <SparkFunLSM9DS1.h>  //IMU library
-
 
 //Pin definitions 
 #define magLED 25
@@ -56,7 +56,7 @@ void loop() {
   }
   magData = String(magX) + ", " + String(magY) + ", " + String(magZ);
 
-  //Creates the string "dataLOG" and includes the device measurements listed, which is then printed to the serial monitor, the xBee monitor, and the SD-card.
+  //Creates the string "dataLOG" and includes the device measurements listed, which is then printed to the serial monitor.
   String dataLOG = String(millis()) + ", " + magData;
   Serial.println(dataLOG);  //prints to the serial monitor so you can see the incoming data
   delay(500);  //waits .5 sec before re-running the loop  
